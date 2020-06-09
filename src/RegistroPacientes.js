@@ -1,20 +1,21 @@
 import React from 'react';
 import axios from 'axios';
+import { Button, Form, Row, Col, Card, Container } from 'react-bootstrap';
 
 class RegistroPaciente extends React.Component{
 
     savePaciente(e) {
-        var user = {
+        var paciente = {
             nombre: document.getElementById("nombrePaciente").value,
             cedula: document.getElementById("cedulaPaciente").value,
             ciudad: document.getElementById("ciudadPaciente").value,
             direccion: document.getElementById("direccionPaciente").value,
             telefono: document.getElementById("telefonoPaciente").value,
+            historiaClinica: document.getElementById("historiaClinica").value,
 
-            
         };
 
-        axios.post ("http://localhost:8000/api/", user)
+        axios.post ("http://localhost:8000/pacientes/", paciente)
         .then((response) => {
             console.log(response);
             }, (error) => {
@@ -24,27 +25,54 @@ class RegistroPaciente extends React.Component{
     }
 
     render() {
-        return <div>
-            <h2>REGISTRO PACIENTE</h2>
-            <form>
-                <label>NOMBRE</label>.
-                <input id = "nombrePaciente"></input>
+        return (
+        <Container maxWidth="sm">
+                <Row>
+                    <Col sm={8}>
+                        <Card body>
+                        <Card.Header>registro pacientes</Card.Header>
+                            <Form id="form-paciente">
+                                
+                                <Form.Group as={Col} controlId="nombrePaciente">
+                                    <Form.Label>Nombre</Form.Label>
+                                    <Form.Control type="nombrePaciente" />
+                                </Form.Group>
 
-                <label>IDENTIFICACION</label>
-                <input id = "cedulaPaciente"></input>
+                                <Form.Group as={Col} controlId="cedulaPaciente">
+                                    <Form.Label>Cedula</Form.Label>
+                                    <Form.Control type="cedulaPaciente" />
+                                </Form.Group>
 
-                <label>CIUDAD</label>
-                <input id = "ciudadPaciente"></input>
+                                <Form.Group as={Col} controlId="ciudadPaciente">
+                                    <Form.Label>Ciudad</Form.Label>
+                                    <Form.Control type="ciudadPaciente" />
+                                </Form.Group>
 
-                <label>DIRECCION</label>
-                <input id = "direccionPaciente"></input>
+                                <Form.Group as={Col} controlId="direccionPaciente">
+                                    <Form.Label>Direccion</Form.Label>
+                                    <Form.Control type="direccionPaciente" />
+                                </Form.Group>
 
-                <label>TELEFONO</label>
-                <input id = "telefonoPaciente"></input>
+                                <Form.Group as={Col} controlId="telefonoPaciente">
+                                    <Form.Label>Telefono</Form.Label>
+                                    <Form.Control type="telefonoPaciente" />
+                                </Form.Group>
 
-                <button onClick = {this.savePaciente} >Guardar</button>
-            </form>
-        </div>
+                                <Form.Group as={Col} controlId="historiaClinica">
+                                    <Form.Label>Historia Clinica</Form.Label>
+                                    <Form.Control type="historiaClinica" />
+                                </Form.Group>
+
+                                
+                            </Form>
+                        </Card>
+                    </Col>
+                    <Col sm={4}>
+                        <Button variant="primary" type="submit" form="form-paciente" onClick = {this.savePaciente}>Ingresar</Button><br />
+                    </Col>
+                </Row>
+            </Container> 
+        )
 
     }
 }

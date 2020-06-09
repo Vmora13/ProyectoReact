@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import RegistroPacientes from './RegistroPacientes'
+import HistoriaClinica from './HistoriaClinica'
+import CentroMedico from './CentroMedico'
+import RegistroMedico from './RegistroMedico'
 
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
@@ -15,6 +18,19 @@ function App() {
             <li>
               <Link to="/registroPacientes">RegistroPacientes</Link>
             </li>
+
+            <li>
+              <Link to="/historiaClinicas">HistoriaClinica</Link>
+            </li>
+
+            <li>
+              <Link to="/centroMedico">CentroMedico</Link>
+            </li>
+
+            <li>
+              <Link to="/registroMedico">RegistroMedico</Link>
+            </li>
+
           </ul>
         </nav>
         <Switch>
@@ -24,6 +40,17 @@ function App() {
             <RegistroPacientes />
           </Route>
 
+          <Route path="/historiaClinicas">
+            <HistoriaClinica />
+          </Route>
+
+          <Route path="/centroMedico">
+            <CentroMedico />
+          </Route>
+
+          <Route path="/registroMedico">
+            <RegistroMedico />
+          </Route>
 
 
           <div className="App">
